@@ -64,7 +64,7 @@ function genererTableProduits() {
 
   produits.forEach((prod, i) => {
     const codeRef         = prod["Référence"] || prod["Product"] || "";
-    const nomProd         = prod["Nom"] || prod["Product"] || "";
+    const nomProd         = prod["Product"] + " "+ prod["Presentation"] + " " + prod["Unnamed: 3"] || " ";
     const qtParCartonDef  = parseFloat(prod["Quantité par carton"])   || 1;
     const poidsCartonDef  = parseFloat(prod["Poids Brut Carton"])    || 0;
     const volCartonDef    = parseFloat(prod["M3 par carton"])        || 0;
@@ -264,7 +264,7 @@ function traiterCalcul() {
       // Aucune unité ⇒ on stocke row vide pour l’export
       lastResult.rowsProduits.push({
         Référence:        prod["Référence"],
-        Nom:              prod["Nom"],
+        Nom:              prod["Product"] + " "+ prod["Presentation"] + " " + prod["Unnamed: 3"],
         QtéUnité:         0,
         QtéParCarton:     unitsPerCarton,
         PoidsCarton:      poidsParCarton,
@@ -307,7 +307,7 @@ function traiterCalcul() {
     // Stocker dans rowsProduits pour l’export Excel
     lastResult.rowsProduits.push({
       Référence:        prod["Référence"],
-      Nom:              prod["Nom"],
+      Nom:              prod["Product"] + " "+ prod["Presentation"] + " " + prod["Unnamed: 3"],
       QtéUnité:         qtUnits,
       QtéParCarton:     unitsPerCarton,
       PoidsCarton:      parseFloat(poidsParCarton.toFixed(3)),
