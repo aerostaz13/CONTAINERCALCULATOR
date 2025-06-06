@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Container Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    input[type="number"] {
+      width: 80px;
+      padding: 4px;
+      font-size: 1rem;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    .btn-calculer {
+      padding: 10px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    .btn-calculer:hover {
+      background-color: #0056b3;
+    }
+    #btn-reset {
+      background-color: #dc3545;
+      margin-left: 10px;
+    }
+    #btn-download {
+      background-color: #28a745;
+      margin-left: 10px;
+    }
+    .message {
+      margin-top: 1em;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    .message.categorie {
+      margin-bottom: 1em;
+      border-left: 4px solid #555;
+      background-color: #f9f9f9;
+    }
+    .message-item {
+      margin-left: 1em;
+    }
+    em { font-size: 0.9rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Container Calculator</h1>
+
+  <!-- 1. Tableau des produits (quantité unitaire + carton poids/M³ + réfrigéré) -->
+  <section id="section-produits">
+    <h2>Quantités et paramètres par carton</h2>
+    <table id="table-produits">
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Nom</th>
+          <th>Quantité unitaire</th>
+          <th>Quantité par carton</th>
+          <th>Poids Brut Carton (kg)</th>
+          <th>Volume par Carton (m³)</th>
+          <th>Réfrigéré ?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Lignes injectées par JavaScript -->
+      </tbody>
+    </table>
+    <em>
+      Saisissez le nombre d’unités par produit, et modifiez si besoin :
+      la quantité par carton, le poids brut du carton, ou le volume par carton.
+      Cochez si le produit est réfrigéré.
+    </em>
+  </section>
+
+  <!-- 2. Tableau “Capacités des conteneurs” (modifiable) -->
+  <section id="section-conteneurs" style="margin-bottom: 1em;">
+    <h2>Capacités des conteneurs (modifiable)</h2>
+    <table id="table-conteneurs">
+      <thead>
+        <tr>
+          <th>Code conteneur</th>
+          <th>Capacité volume (m³)</th>
+          <th>Capacité poids (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Lignes injectées par JavaScript -->
+      </tbody>
+    </table>
+    <em>Modifiez ces valeurs si besoin ; elles seront utilisées lors du calcul.</em>
+  </section>
+
+  <!-- 3. Boutons d’action -->
+  <section id="section-action" style="margin-bottom: 1em;">
+    <button id="btn-calculer" class="btn-calculer">
+      Calculer le(s) conteneur(s) optimal(aux)
+    </button>
+    <button id="btn-reset" class="btn-calculer">
+      Réinitialiser
+    </button>
+    <button id="btn-download" class="btn-calculer">
+      Télécharger Excel
+    </button>
+  </section>
+
+  <!-- 4. Zone de résultat -->
+  <section id="section-resultat">
+    <h2>Résultat</h2>
+    <div id="message-resultat"></div>
+  </section>
+
+  <!-- 5. Librairie SheetJS pour générer l’Excel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- 6. Script principal -->
+  <script src="main.js"></script>
+</body>
+</html>
+
