@@ -115,6 +115,7 @@ function genererTableProduits() {
       <td style="text-align: center;">
         <input
           type="checkbox"
+          class = "cyberpunk-checkbox"
           id="prod-refrig-${i}"
           ${isRefrig ? "checked" : ""}
         />
